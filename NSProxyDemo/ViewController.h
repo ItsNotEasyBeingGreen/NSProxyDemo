@@ -6,9 +6,9 @@
 //  Copyright © 2019 Mark Cornelisse. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITextFieldDelegate>
 
 
 @end

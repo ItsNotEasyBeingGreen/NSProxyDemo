@@ -8,11 +8,12 @@
 
 #import "ViewController.h"
 #import "TextFieldDelegateProxy.h"
+#import "DataModel.h"
 
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *textInputField;
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+@property (weak, nonatomic) IBOutlet UIStackView *buttons;
 
 @property (strong, nonatomic) TextFieldDelegateProxy *textInputFieldDelegate;
 @property (strong, nonatomic) IBOutlet DataModel *dataModel;
@@ -21,8 +22,12 @@
 
 @implementation ViewController
 
+- (IBAction)saveButtonPressed:(UIButton *)sender {
+    [self.dataModel save];
+}
+
 - (IBAction)clearButtonPressed:(UIButton *)sender {
-    
+    [self.dataModel clear];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -32,9 +37,9 @@
     NSString *finalString = [currentString stringByReplacingCharactersInRange:range withString:string];
     NSUInteger finalStringCount = finalString.length;
     if (finalStringCount > 0) {
-        _clearButton.hidden = NO;
+        _buttons.hidden = NO;
     } else {
-        _clearButton.hidden = YES;
+        _buttons.hidden = YES;
     }
     return YES;
 }
@@ -45,6 +50,8 @@
     [super awakeFromNib];
     
     _textInputFieldDelegate = [[TextFieldDelegateProxy alloc] initWithViewController:self andDataModel:self.dataModel];
+    
+    [self.dataModel addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)viewDidLoad {
@@ -56,5 +63,11 @@
 #pragma mark - UIResponder
 
 #pragma mark - NSObject
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"text"]) {
+        _textInputField.text = _dataModel.text;
+    }
+}
 
 @end

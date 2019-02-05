@@ -15,7 +15,7 @@
 }
 
 - (void)clear {
-    _text = nil;
+    self.text = @"";
 }
 
 #pragma mark - UITextFieldDelegate
@@ -23,15 +23,18 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString *currentString = textField.text;
     NSString *finalString = [currentString stringByReplacingCharactersInRange:range withString:string];
-    NSUInteger finalStringCount = finalString.length;
-    if (finalStringCount > 0) {
-//        _clearButton.hidden = NO;
-    } else {
-//        _clearButton.hidden = YES;
-    }
+    _text = finalString;
     return YES;
 }
 
 #pragma mark - NSObject
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _text = @"";
+    }
+    return self;
+}
 
 @end

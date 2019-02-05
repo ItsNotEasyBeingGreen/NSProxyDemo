@@ -18,32 +18,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uL-pH-CbB">
-                                <rect key="frame" x="169.5" y="204" width="36" height="30"/>
-                                <state key="normal" title="Clear"/>
-                                <connections>
-                                    <action selector="clearButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qWg-ne-ebH"/>
-                                </connections>
-                            </button>
                             <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type something here." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fU0-Gc-ezJ">
                                 <rect key="frame" x="16" y="134" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <stackView hidden="YES" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="5nS-MT-WBE">
+                                <rect key="frame" x="148.5" y="217" width="78" height="30"/>
+                                <subviews>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJd-Aw-ncM">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="30"/>
+                                        <state key="normal" title="save"/>
+                                        <connections>
+                                            <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7qr-gx-Bfd"/>
+                                        </connections>
+                                    </button>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyV-WV-JQ9">
+                                        <rect key="frame" x="44" y="0.0" width="34" height="30"/>
+                                        <state key="normal" title="clear"/>
+                                        <connections>
+                                            <action selector="clearButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZqL-mF-bBM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fU0-Gc-ezJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="114" id="Tzx-g2-YvR"/>
-                            <constraint firstItem="4uL-pH-CbB" firstAttribute="top" secondItem="fU0-Gc-ezJ" secondAttribute="bottom" constant="40" id="aj2-uu-fQN"/>
+                            <constraint firstItem="5nS-MT-WBE" firstAttribute="top" secondItem="fU0-Gc-ezJ" secondAttribute="bottom" constant="53" id="bD8-2m-KJz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fU0-Gc-ezJ" secondAttribute="trailing" constant="16" id="gDa-mS-OpA"/>
                             <constraint firstItem="fU0-Gc-ezJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="i9r-N2-pyM"/>
-                            <constraint firstItem="4uL-pH-CbB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sXc-NY-bue"/>
+                            <constraint firstItem="5nS-MT-WBE" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tA0-ZH-JQ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="clearButton" destination="4uL-pH-CbB" id="5aY-LM-Ou6"/>
+                        <outlet property="buttons" destination="5nS-MT-WBE" id="dHl-jv-4cp"/>
                         <outlet property="dataModel" destination="DQQ-ti-AYY" id="qFS-Sf-oOT"/>
                         <outlet property="textInputField" destination="fU0-Gc-ezJ" id="2h8-xt-R3Y"/>
                     </connections>
